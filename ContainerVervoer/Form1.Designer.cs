@@ -33,6 +33,7 @@
             this.upDownSchipGewicht = new System.Windows.Forms.NumericUpDown();
             this.label1 = new System.Windows.Forms.Label();
             this.groupBox2 = new System.Windows.Forms.GroupBox();
+            this.btnDeleteContainer = new System.Windows.Forms.Button();
             this.btnStartVerdeling = new System.Windows.Forms.Button();
             this.rBtnWaardevol = new System.Windows.Forms.RadioButton();
             this.rBtnGekoeld = new System.Windows.Forms.RadioButton();
@@ -58,7 +59,6 @@
             this.lBContainer3 = new System.Windows.Forms.ListBox();
             this.lBContainer6 = new System.Windows.Forms.ListBox();
             this.lBContainer5 = new System.Windows.Forms.ListBox();
-            this.btnDeleteContainer = new System.Windows.Forms.Button();
             this.groupBox1.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.upDownSchipGewicht)).BeginInit();
             this.groupBox2.SuspendLayout();
@@ -139,6 +139,16 @@
             this.groupBox2.TabIndex = 1;
             this.groupBox2.TabStop = false;
             this.groupBox2.Text = "Container";
+            // 
+            // btnDeleteContainer
+            // 
+            this.btnDeleteContainer.Location = new System.Drawing.Point(108, 93);
+            this.btnDeleteContainer.Name = "btnDeleteContainer";
+            this.btnDeleteContainer.Size = new System.Drawing.Size(75, 23);
+            this.btnDeleteContainer.TabIndex = 8;
+            this.btnDeleteContainer.Text = "Delete";
+            this.btnDeleteContainer.UseVisualStyleBackColor = true;
+            this.btnDeleteContainer.Click += new System.EventHandler(this.btnDeleteContainer_Click);
             // 
             // btnStartVerdeling
             // 
@@ -352,7 +362,7 @@
             // lBContainer1
             // 
             this.lBContainer1.FormattingEnabled = true;
-            this.lBContainer1.Location = new System.Drawing.Point(66, 291);
+            this.lBContainer1.Location = new System.Drawing.Point(66, 299);
             this.lBContainer1.Name = "lBContainer1";
             this.lBContainer1.Size = new System.Drawing.Size(250, 134);
             this.lBContainer1.TabIndex = 5;
@@ -360,7 +370,7 @@
             // lBContainer2
             // 
             this.lBContainer2.FormattingEnabled = true;
-            this.lBContainer2.Location = new System.Drawing.Point(66, 446);
+            this.lBContainer2.Location = new System.Drawing.Point(66, 454);
             this.lBContainer2.Name = "lBContainer2";
             this.lBContainer2.Size = new System.Drawing.Size(250, 134);
             this.lBContainer2.TabIndex = 6;
@@ -368,7 +378,7 @@
             // lBContainer4
             // 
             this.lBContainer4.FormattingEnabled = true;
-            this.lBContainer4.Location = new System.Drawing.Point(364, 446);
+            this.lBContainer4.Location = new System.Drawing.Point(364, 454);
             this.lBContainer4.Name = "lBContainer4";
             this.lBContainer4.Size = new System.Drawing.Size(250, 134);
             this.lBContainer4.TabIndex = 8;
@@ -376,7 +386,7 @@
             // lBContainer3
             // 
             this.lBContainer3.FormattingEnabled = true;
-            this.lBContainer3.Location = new System.Drawing.Point(364, 291);
+            this.lBContainer3.Location = new System.Drawing.Point(364, 299);
             this.lBContainer3.Name = "lBContainer3";
             this.lBContainer3.Size = new System.Drawing.Size(250, 134);
             this.lBContainer3.TabIndex = 7;
@@ -384,7 +394,7 @@
             // lBContainer6
             // 
             this.lBContainer6.FormattingEnabled = true;
-            this.lBContainer6.Location = new System.Drawing.Point(671, 446);
+            this.lBContainer6.Location = new System.Drawing.Point(671, 454);
             this.lBContainer6.Name = "lBContainer6";
             this.lBContainer6.Size = new System.Drawing.Size(250, 134);
             this.lBContainer6.TabIndex = 10;
@@ -392,20 +402,10 @@
             // lBContainer5
             // 
             this.lBContainer5.FormattingEnabled = true;
-            this.lBContainer5.Location = new System.Drawing.Point(671, 291);
+            this.lBContainer5.Location = new System.Drawing.Point(671, 299);
             this.lBContainer5.Name = "lBContainer5";
             this.lBContainer5.Size = new System.Drawing.Size(250, 134);
             this.lBContainer5.TabIndex = 9;
-            // 
-            // btnDeleteContainer
-            // 
-            this.btnDeleteContainer.Location = new System.Drawing.Point(108, 93);
-            this.btnDeleteContainer.Name = "btnDeleteContainer";
-            this.btnDeleteContainer.Size = new System.Drawing.Size(75, 23);
-            this.btnDeleteContainer.TabIndex = 8;
-            this.btnDeleteContainer.Text = "Delete";
-            this.btnDeleteContainer.UseVisualStyleBackColor = true;
-            this.btnDeleteContainer.Click += new System.EventHandler(this.btnDeleteContainer_Click);
             // 
             // Form1
             // 

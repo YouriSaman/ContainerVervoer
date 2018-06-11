@@ -7,8 +7,6 @@ namespace ContainerVervoer
     public partial class Form1 : Form
     {
         private Schip schip;
-        private Plaats plaats; //TODO Weet niet of hij nodig is..
-        private List<Plaats> Plaatsen;
         private List<Container> Containers;
         public Form1()
         {
@@ -20,8 +18,13 @@ namespace ContainerVervoer
         {
             var maxGewicht = Convert.ToInt32(upDownSchipGewicht.Value);
             var minGewicht = Schip.BerekenMinGewicht(maxGewicht);
+            var plaatsen = new List<Plaats>();
+            for (int i = 0; i < 6; i++)
+            {
+                plaatsen.Add(new Plaats());
+            }
 
-            schip = new Schip(maxGewicht, minGewicht, 0, 0, null);
+            schip = new Schip(maxGewicht, minGewicht, 0, 0, plaatsen);
 
             lblGewichtContainers.Text = "0";
             lblAantalContainers.Text = "0";
@@ -62,32 +65,29 @@ namespace ContainerVervoer
             {
                 if (aantalWaardevol + 1 <= 4) //Kijken of het maximum aantal waardevolle containers word overschreden als deze container ook word toegevoegd
                 {
-                    if (schip.HuidigGewicht + gewicht <= schip.MaxGewicht)
-                    {
-                        schip.HuidigGewicht += gewicht;
-
-                        //Container toevoegen aan lijst en listbox en de labels aanpassen
-                        Containers.Add(nieuweContainer);
-
-                        lblGewichtContainers.Text = Convert.ToString(schip.HuidigGewicht);
-                        lBContainers.Items.Add(nieuweContainer.ToString());
-                        lblAantalContainers.Text = Convert.ToString(lBContainers.Items.Count);
-                    }
-                    else
-                    {
-                        MessageBox.Show("Gewicht zorgt ervoor dat het maximum gewicht op het schip wordt overschreden!");
-                    }
+                    ToevoegingContainerMetCheck(nieuweContainer);
                 }
                 else
                 {
                     MessageBox.Show("Het maximum van 4 waardevolle containers word hierbij overschreden!");
                 }
             }
+            else
+            {
+                ToevoegingContainerMetCheck(nieuweContainer);
+            }
         }
 
         private void btnStartVerdeling_Click(object sender, EventArgs e)
         {
+            schip = Schip.PlaatsContainers(Containers, schip);
 
+            lBContainer1.DataSource = schip.Plaatsen[0].containers;
+            lBContainer2.DataSource = schip.Plaatsen[1].containers;
+            lBContainer3.DataSource = schip.Plaatsen[2].containers;
+            lBContainer4.DataSource = schip.Plaatsen[3].containers;
+            lBContainer5.DataSource = schip.Plaatsen[4].containers;
+            lBContainer6.DataSource = schip.Plaatsen[5].containers;
         }
 
         private void btnDeleteContainer_Click(object sender, EventArgs e)
@@ -107,5 +107,29 @@ namespace ContainerVervoer
                 lblGewichtContainers.Text = Convert.ToString(schip.HuidigGewicht);
             }
         }
+
+
+        /// <summary>
+        /// Container toevoegen als maximaal gewicht niet word overschreden
+        /// </summary>
+        private void ToevoegingContainerMetCheck(Container nieuweContainer)
+        {
+            if (schip.HuidigGewicht + nieuweContainer.Gewicht <= schip.MaxGewicht)
+            {
+                schip.HuidigGewicht += nieuweContainer.Gewicht;
+
+                //Container toevoegen aan lijst en listbox en de labels aanpassen
+                Containers.Add(nieuweContainer);
+
+                lblGewichtContainers.Text = Convert.ToString(schip.HuidigGewicht);
+                lBContainers.Items.Add(nieuweContainer.ToString());
+                lblAantalContainers.Text = Convert.ToString(lBContainers.Items.Count);
+            }
+            else
+            {
+                MessageBox.Show("Gewicht zorgt ervoor dat het maximum gewicht op het schip wordt overschreden!");
+            }
+        }
+
     }
 }
